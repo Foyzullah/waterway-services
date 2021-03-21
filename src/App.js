@@ -18,6 +18,7 @@ function App() {
       <div className="main-area">
         <div className="container">
           <Router>
+            <h3>name:{loggedInClient.name}</h3>
             <Header></Header>
             <Switch>
               <Route path="/home">

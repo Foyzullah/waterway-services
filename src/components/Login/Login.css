@@ -37,6 +37,9 @@ label {}
 .others-login {
   margin-top: 15px;
 }
+.others-login p {
+  cursor: pointer;
+}
 .show-message p {
   font-size: 20px;
 }

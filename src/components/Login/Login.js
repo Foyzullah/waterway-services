@@ -25,6 +25,7 @@ const Login = () => {
   });
 
   const [loggedInClient, setLoggedInClient] = useContext(UserContext);
+
   const history = useHistory();
   const location = useLocation();
 
@@ -72,8 +73,10 @@ const Login = () => {
           const clietnInformation = res.user;
           clietnInformation.error = "";
           clietnInformation.success = true;
+          updateUserName(clietnInformation.name);
           setClient(clietnInformation);
           setLoggedInClient(clietnInformation);
+          history.replace(from);
         })
         .catch((error) => {
           handleErro(error);
@@ -86,10 +89,9 @@ const Login = () => {
         .signInWithEmailAndPassword(client.email, client.password)
         .then((res) => {
           console.log(res);
-          const clietnInformation = { ...client };
+          const clietnInformation = { ...res.user };
           clietnInformation.error = "";
           clietnInformation.success = true;
-
           setClient(clietnInformation);
           setLoggedInClient(clietnInformation);
           history.replace(from);
@@ -108,11 +110,12 @@ const Login = () => {
       .auth()
       .signInWithPopup(googleProvider)
       .then((res) => {
-        const clietnInformation = { ...client };
+        const clietnInformation = { ...res.user };
         clietnInformation.error = "";
         clietnInformation.success = true;
         setClient(clietnInformation);
         setLoggedInClient(clietnInformation);
+        history.replace(from);
       })
       .catch((error) => {
         handleErro(error);
@@ -126,14 +129,31 @@ const Login = () => {
       .auth()
       .signInWithPopup(facebookProvider)
       .then((res) => {
-        const clietnInformation = { ...client };
+        const clietnInformation = { ...res.user };
         clietnInformation.error = "";
         clietnInformation.success = true;
         setClient(clietnInformation);
         setLoggedInClient(clietnInformation);
+        history.replace(from);
       })
       .catch((error) => {
         handleErro(error);
+      });
+  };
+
+  // Update name
+  const updateUserName = (name) => {
+    const user = firebase.auth().currentUser;
+
+    user
+      .updateProfile({
+        displayName: name,
+      })
+      .then(function () {
+        console.log("user name updated successfully");
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   };
 
@@ -189,22 +209,14 @@ const Login = () => {
           <br />
 
           {/* Third party(google and facebook) sign in option  */}
-          {newClient && (
+          {!newClient && (
             <div className="others-login">
-              <p>
-                <FontAwesomeIcon
-                  onClick={handleGoogleSignIn}
-                  className="icon-inner"
-                  icon={faGoogle}
-                />
+              <p onClick={handleGoogleSignIn}>
+                <FontAwesomeIcon className="icon-inner" icon={faGoogle} />
                 Continue with google
               </p>
-              <p>
-                <FontAwesomeIcon
-                  onClick={handleFacebookSignIn}
-                  className="icon-inner"
-                  icon={faFacebook}
-                />{" "}
+              <p onClick={handleFacebookSignIn}>
+                <FontAwesomeIcon className="icon-inner" icon={faFacebook} />
                 Continue with Facebook
               </p>
             </div>
