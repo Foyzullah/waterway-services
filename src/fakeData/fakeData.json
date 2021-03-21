@@ -1,0 +1,89 @@
+[
+  {
+  "id":1,
+  "strId":"launch",
+  "title":"Launch",
+  "avrgPrice":"$90",
+  "imgUrl":"https://bd-info.com/wp-content/uploads/2020/07/mv-manami.jpg",
+  "categories":{
+    "regular": {
+      "person":1,
+      "price": "$50"
+    },
+    "family": {
+      "person":4,
+      "price": "$70"
+    },
+    "friends": {
+      "person":6,
+      "price": "$90"
+    }
+  }
+  },
+  {
+  "id":2,
+  "strId":"waterbus",
+  "title":"Waterbus",
+  "avrgPrice":"$100",
+  "imgUrl":"https://bangladeshfact.com/wp-content/uploads/2017/11/m.v.greenline-1.jpg",
+  "rideBy":"waterbus",
+  "categories":{
+    "regular": {
+      "person":1,
+      "price": "$50"
+    },
+    "family": {
+      "person":2,
+      "price": "$70"
+    },
+    "friends": {
+      "person":4,
+      "price": "$90"
+    }
+  }
+  },
+  {
+  "id":3,
+  "strId":"boat",
+  "title":"Boat",
+  "avrgPrice":"$100",
+  "imgUrl":"https://ekhrp2uckdap9x81nkibi3l7-wpengine.netdna-ssl.com/wp-content/uploads/2020/10/900x600-Banner-3.jpg",
+  "rideBy":"boat",
+  "categories":{
+    "regular": {
+      "person":1,
+      "price": "$50"
+    },
+    "family": {
+      "person":2,
+      "price": "$70"
+    },
+    "friends": {
+      "person":4,
+      "price": "$90"
+    }
+  }
+  },
+  {
+  "id":4,
+  "strId":"pleasure-boat",
+  "title":"Pleasure boat",
+  "avrgPrice":"$150",
+  "imgUrl":"http://www.luxuryarabia.com/wp-content/uploads/2016/02/PLEASURE-BOAT-FOOTER.jpg",
+  "rideBy":"pleasure_boat",
+  "categories":{
+    "regular": {
+      "person":2,
+      "price": "$50"
+    },
+    "family": {
+      "person":4,
+      "price": "$70"
+    },
+    "friends": {
+      "person":6,
+      "price": "$90"
+    }
+  }
+  }
+]
