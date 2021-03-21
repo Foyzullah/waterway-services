@@ -22,3 +22,20 @@
 input[type="submit"] {
   margin-top: 30px;
 }
+
+ul.search-result {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 25px;
+}
+
+ul.search-result li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+ul.search-result img {
+  width: 90px;
+  border-radius: 3px;
+}

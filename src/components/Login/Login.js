@@ -30,18 +30,6 @@ const Login = () => {
 
   let { from } = location.state || { from: { pathname: "/" } };
 
-  // Handle Login or Sign in success
-  // const handleSuccess = (res) => {
-  //   const clietnInformation = { ...client };
-  //   clietnInformation.error = "";
-  //   clietnInformation.success = true;
-  //   clietnInformation.name = "Foyzullah";
-  //   setClient(clietnInformation);
-  //   setLoggedInClient(clietnInformation);
-  //   // console.log(res);
-  // };
-  // console.log(client);
-
   // Handle Login or Sign in error
   const handleErro = (error) => {
     const newClientInfo = { ...client };
@@ -73,8 +61,6 @@ const Login = () => {
     }
   };
 
-  // Handle Sign/Log In With Email & Password
-
   // Handle form submission
   const handleSubmit = (e) => {
     if (newClient && client.email && client.password) {
@@ -83,7 +69,7 @@ const Login = () => {
         .createUserWithEmailAndPassword(client.email, client.password)
         .then((res) => {
           console.log(res);
-          const clietnInformation = { ...client };
+          const clietnInformation = res.user;
           clietnInformation.error = "";
           clietnInformation.success = true;
           setClient(clietnInformation);
@@ -103,6 +89,7 @@ const Login = () => {
           const clietnInformation = { ...client };
           clietnInformation.error = "";
           clietnInformation.success = true;
+
           setClient(clietnInformation);
           setLoggedInClient(clietnInformation);
           history.replace(from);
@@ -209,7 +196,7 @@ const Login = () => {
                   onClick={handleGoogleSignIn}
                   className="icon-inner"
                   icon={faGoogle}
-                />{" "}
+                />
                 Continue with google
               </p>
               <p>

@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../../App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
 import fakeData from "../../fakeData/fakeData.json";
-import gImage from "../../img/p-1.jpg";
+import mapImage from "../../img/Map.png";
 import "./Destination.css";
 
 const Destination = () => {
+  const [loggedInClient, setLoggedInClient] = useContext(UserContext);
+  console.log(loggedInClient);
   const [showResult, setShowResult] = useState(false);
   const { id } = useParams();
-  console.log("id=", id);
   let selectedService = fakeData.find((service) => service.strId === id);
   const { title, imgUrl, categories } = selectedService;
 
-  console.log(selectedService);
-
   const handleOnSubmit = (e) => {
     setShowResult(true);
-    console.log("submited");
     e.preventDefault();
   };
   return (
@@ -50,15 +51,59 @@ const Destination = () => {
               <br />
               <input type="submit" value="Search" />
             </form>
+
+            {/* Search Resul section  */}
+            {showResult && (
+              <div>
+                <ul className="search-result">
+                  <li>
+                    <img src={imgUrl} alt="" />
+                  </li>
+                  <li>{title}</li>
+                  <li>
+                    <FontAwesomeIcon
+                      className="icon-inner"
+                      icon={faUserFriends}
+                    />
+                    {categories.regular.person}
+                  </li>
+                  <li>{categories.regular.price}</li>
+                </ul>
+                <ul className="search-result">
+                  <li>
+                    <img src={imgUrl} alt="" />
+                  </li>
+                  <li>{title}</li>
+                  <li>
+                    <FontAwesomeIcon
+                      className="icon-inner"
+                      icon={faUserFriends}
+                    />
+                    {categories.family.person}
+                  </li>
+                  <li>{categories.family.price}</li>
+                </ul>
+                <ul className="search-result">
+                  <li>
+                    <img src={imgUrl} alt="" />
+                  </li>
+                  <li>{title}</li>
+                  <li>
+                    <FontAwesomeIcon
+                      className="icon-inner"
+                      icon={faUserFriends}
+                    />
+                    {categories.friends.person}
+                  </li>
+                  <li>{categories.friends.price}</li>
+                </ul>
+              </div>
+            )}
           </div>
-          {/* <div>
-          {selectedService && <p>Name: {selectedService.categories}</p>}
-        </div> */}
-          {showResult && <div>{title}</div>}
         </div>
         <div className="col-md-7">
           <div className="google-mp">
-            <img src={gImage} alt="" />
+            <img src={mapImage} alt="" />
           </div>
         </div>
       </div>
